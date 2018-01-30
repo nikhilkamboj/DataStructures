@@ -82,6 +82,10 @@ public class Tree {
         deleteNodeFromTree(treeRoot,valueToDelete);
     }
 
+    public Integer findInOrderSuccessor(int value){
+        return inOrderSuccessor(treeRoot, value);
+    }
+
 
     private TreeNode insertToTree(TreeNode root, Integer key){
         if(root == null){
@@ -264,12 +268,45 @@ public class Tree {
         }
     }
 
-
     private TreeNode findMinInTreeForDelete(TreeNode root){
         if (root.getLeft() == null){
             return root;
         }
         return findMinInTreeForDelete(root.getLeft());
+    }
+
+    private Integer inOrderSuccessor(TreeNode root, int value){
+        if (root == null){
+            return null;
+        }
+        while (root.getData() != value){
+            if (root.getData() >= value){
+                root = root.getLeft();
+            }else {
+                root = root.getRight();
+            }
+        }
+
+        if (root.getRight() != null){
+            TreeNode successor = findMinInTreeForDelete(root.getRight());
+            return successor.getData();
+        }else {
+            TreeNode ancestor = treeRoot;
+            TreeNode current = root;
+            Integer successor = null;
+
+            while (ancestor != current){
+                if (ancestor.getData() >= value){
+                    successor = ancestor.getData();
+                    ancestor = ancestor.getLeft();
+                } else {
+                    ancestor = ancestor.getRight();
+                }
+            }
+            return successor;
+
+        }
+
     }
 
 }

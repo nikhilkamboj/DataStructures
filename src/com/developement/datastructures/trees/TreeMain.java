@@ -28,9 +28,11 @@ public class TreeMain {
 //
 //        tree.preOrder();
 
-        tree.deleteNode(6);
+//        tree.deleteNode(6);
+//
+//        tree.preOrder();
 
-        tree.preOrder();
+        System.out.println( "value for inorder: " + tree.findInOrderSuccessor(7));
     }
 
 }
