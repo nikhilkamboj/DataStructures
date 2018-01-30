@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class Tree {
 
+//    main root of the binary search tree
     TreeNode treeRoot;
 
 
@@ -14,15 +15,31 @@ public class Tree {
 
     }
 
+    /**
+     * used to insert value into the tree.
+     *
+     * @param data value to be inserted into the BST
+     */
     public void insert(Integer data){
 
         treeRoot = insertToTree(treeRoot,data);
     }
 
+    /**
+     * this method searches if value is present in tree or not
+     *
+     * @param data value to be searched in BST
+     * @return if found returns true else false
+     */
     public boolean search(Integer data){
         return searchInTree(treeRoot,data);
     }
 
+    /**
+     * searches minValue into BST
+     *
+     * @return minValue is returned
+     */
     public Integer findMin(){
         return findMinInTree(treeRoot);
     }
