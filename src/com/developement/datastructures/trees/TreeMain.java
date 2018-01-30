@@ -33,6 +33,7 @@ public class TreeMain {
 //        tree.preOrder();
 
         System.out.println( "value for inorder: " + tree.findInOrderSuccessor(7));
+        System.out.println( "value for inorder: " + tree.findInOrderPredecessor(7));
     }
 
 }

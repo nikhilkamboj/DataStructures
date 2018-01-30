@@ -86,6 +86,10 @@ public class Tree {
         return inOrderSuccessor(treeRoot, value);
     }
 
+    public Integer findInOrderPredecessor(int value){
+        return inOrderPredecessor(treeRoot, value);
+    }
+
 
     private TreeNode insertToTree(TreeNode root, Integer key){
         if(root == null){
@@ -309,4 +313,37 @@ public class Tree {
 
     }
 
+    private Integer inOrderPredecessor(TreeNode root, int value){
+        if (root == null){
+            return null;
+        }
+        while (root.getData() != value){
+            if (root.getData() >= value){
+                root = root.getLeft();
+            }else {
+                root = root.getRight();
+            }
+        }
+
+        if (root.getLeft() != null){
+            TreeNode predecessor = root.getLeft();
+            return predecessor.getData();
+        }else {
+            TreeNode ancestor = treeRoot;
+            TreeNode current = root;
+            Integer predecessor = null;
+
+            while (ancestor != current){
+                if (ancestor.getData() < value){
+                    predecessor = ancestor.getData();
+                    ancestor = ancestor.getRight();
+                } else {
+                    ancestor = ancestor.getLeft();
+                }
+            }
+            return predecessor;
+
+        }
+
+    }
 }
