@@ -107,10 +107,15 @@ public class LinkedList {
 
     }
 
+    public void deleteNodeRecursively(int data) {
+        head.setNext(deleteRecursive(head.getNext(),data));
+    }
+
 
     //TODO add a wrapper method similar to reverseList
 
     public void printOriginalList(){
+
         this.printRecursiveOriginal(this.head);
     }
 
@@ -136,7 +141,7 @@ public class LinkedList {
             return;
         }
 
-         printRecursiveReverse(head.getNext());
+        printRecursiveReverse(head.getNext());
         System.out.print(head.getData() + " ");
     }
 
@@ -155,4 +160,22 @@ public class LinkedList {
         q.setNext(p);
         p.setNext(null);
     }
+
+
+    private Node deleteRecursive(Node head, int data) {
+
+        if (head == null) {
+            return head;
+        }
+
+        if (head.getData() == data) {
+            head = head.getNext();
+            return head;
+        }
+
+        head.setNext(deleteRecursive(head.getNext(),data));
+
+        return head;
+    }
+
 }
