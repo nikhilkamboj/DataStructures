@@ -32,7 +32,10 @@ public class Main {
 
         list1.printList();
 
-        list1.reverseList();
+//        list1.reverseList();
+//
+//        list1.printList();
+        list1.deleteNodeRecursively(5);
 
         list1.printList();
 

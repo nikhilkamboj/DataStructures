@@ -161,7 +161,16 @@ public class LinkedList {
         p.setNext(null);
     }
 
-
+    /**
+     * the basic concept is,  when you reach that particular node to be deleted
+     * you set the head(at any given stack trace) to its next node and then return head.
+     *
+     * when returned setNext for the previous node in stack gets set.
+     *
+     * @param head current node reference at any pont in stack trace
+     * @param data the value to be deleted
+     * @return returns the Node
+     */
     private Node deleteRecursive(Node head, int data) {
 
         if (head == null) {
@@ -170,10 +179,9 @@ public class LinkedList {
 
         if (head.getData() == data) {
             head = head.getNext();
-            return head;
+        } else {
+            head.setNext(deleteRecursive(head.getNext(),data));
         }
-
-        head.setNext(deleteRecursive(head.getNext(),data));
 
         return head;
     }
